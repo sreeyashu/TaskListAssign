@@ -1,0 +1,26 @@
+.login-screen {
+	padding-top: 1px;
+	background: #2C3E50;
+	color: #fff;
+	text-align: center;
+}
+.login-screen .container {
+	margin-top: 100px;
+}
+.login-screen h1 {
+	position: relative;
+}
+.login-screen h1 p {
+	display: inline;
+	font-size: 12px;
+}
+.login-screen .line {
+	text-align:center;
+	margin-top:60px;
+}
+.loginBtn{
+	margin-top:30px
+}
+.login-container{
+	margin-top:100px;
+}

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en" ng-app="googleTasks">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width">
+	<title>Loading...</title>
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700" rel="stylesheet" type="text/css">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<!-- build:css assets/styles/vendors.css -->
+	<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<!-- endbuild -->
+	<!-- build:css assets/styles/styles.css -->
+	<link rel="stylesheet" href="assets/styles/app.css">
+	<link rel="stylesheet" href="assets/styles/login.css">
+	<!-- endbuild -->
+</head>
+<body ng-controller="appCont" back-transition>
+
+	<div class="app-loading" ng-hide="appReady">
+		<div class="message">
+			<h3>Loading <i></i><i></i><i></i></h3>
+		</div>
+        <q class="quote">Sometimes our stop-doing list needs to be bigger than our to-do list.</q>
+		<script>
+			var splash = document.querySelector(".app-loading"),
+				dots = splash.querySelectorAll(".message i"),
+				i = 0, l = dots.length, tm,
+				next = function () {
+					if (/ng-hide/.test(splash.className)) {
+						clearTimeout(tm);
+						setTimeout(function() {
+							splash.parentNode.removeChild(splash)
+						}, 500);
+					}
+					else {
+						i = ++i % (l + 1);
+						for (var a = 0; a < (i || l);) dots[a++].className = i ? "s" : "";
+						tm = setTimeout(next, 300)
+					}
+				};
+			next();
+		</script>
+	</div>
+
+	<div ng-view ng-class="['view', routeClassName]"></div>
+
+	<!-- build:js assets/scripts/vendors.min.js -->
+	<script src="../bower_components/angular/angular.min.js"></script>
+	<script src="../bower_components/angular-route/angular-route.min.js"></script>
+	<script src="../bower_components/angular-animate/angular-animate.min.js"></script>
+	<script src="../bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+	<script src="../bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+	<script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+	<!-- endbuild -->
+	<!-- build:js assets/scripts/scripts.min.js -->
+	<script src="app.config.js"></script>
+	<script src="app.controller.js"></script>
+	<script src="components/services/services.config.js"></script>
+	<script src="components/services/application.service.js"></script>
+	<script src="components/services/googleApi.service.js"></script>
+	<script src="components/services/tasks.service.js"></script>
+	<script src="components/services/routeFilter.service.js"></script>
+	<script src="components/services/security/security.config.js"></script>
+	<script src="components/services/security/security.service.js"></script>
+	<script src="components/services/sModal.service.js"></script>
+
+	<script src="components/services/storage/storage.config.js"></script>
+	<script src="components/services/storage/cache.service.js"></script>
+	<script src="components/services/storage/local.service.js"></script>
+
+	<!-- directives -->
+	<script src="components/directives/directives.config.js"></script>
+	<script src="components/directives/backTransition.directive.js"></script>
+
+	<!-- login module -->
+	<script src="login/login.config.js"></script>
+	<script src="login/login.controller.js"></script>
+
+	<!-- tasklists module -->
+	<script src="tasklists/tasklists.config.js"></script>
+	<script src="tasklists/tasklists.controller.js"></script>
+
+	<!-- tasks module -->
+	<script src="tasks/tasks.config.js"></script>
+	<script src="tasks/tasks.controller.js"></script>
+	<script src="tasks/addTask.controller.js"></script>
+
+	<!-- endbuild -->
+
+</body>
+</html>

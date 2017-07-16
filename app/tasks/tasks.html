@@ -1,0 +1,45 @@
+<div class="container">
+
+	<header class="clearfix">
+		<h1>
+			<a ng-click="back()" class="back"><img src="assets/images/arrow-left.png" alt="" /></a>
+			{{title}}
+			<div class="actions">
+				<a ng-click="addTask()"><img src="assets/images/add.png" title="add new task" alt=""/></a>
+			</div>
+		</h1>
+	</header>
+
+	<div class="stats" ng-class="{hide: !tasks.length}">
+		<span>{{total}} tasks (+{{todo}}/-{{completed}})</span>
+	</div>
+
+	<ul class="list">
+		<li ng-repeat="task in tasks" ng-include="'task-item.html'"></li>
+	</ul>
+
+	<div class="no-tasks">There are no tasks in this list yet.</div>
+</div>
+
+<script type="text/ng-template" id="task-item.html" class="html">
+	<div class="task">
+		<input type="checkbox" class="check" id="check-{{$id}}"
+			   ng-model="task.status"
+			   ng-true-value="'completed'"
+			   ng-false-value="'needsAction'"
+			   ng-change="changeStatus(task)" />
+		<label for="check-{{$id}}">
+			<img src="assets/images/check-unchecked.png" />
+			<img src="assets/images/check-checked.png" />
+		</label>
+		<span class="title" ng-bind-html="task.title | linky:'_blank'"></span>
+		<span class="actions">
+			<span class="pin" title="pin task" ng-class="{active: task.pinned}" ng-click="pinTask(task)">&star;</span>
+			<span class="delete" title="delete task" ng-click="deleteTask(task.id)">&#8855;</span>
+			<span class="more" title="more" ng-click="more(task)">&hellip;</span>
+		</span>
+	</div>
+	<ul ng-if="task.children.length">
+		<li ng-repeat="task in task.children" ng-include="'task-item.html'"></li>
+	</ul>
+</script>
