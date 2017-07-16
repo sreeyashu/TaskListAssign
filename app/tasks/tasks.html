@@ -24,7 +24,7 @@
 <script type="text/ng-template" id="task-item.html" class="html">
 	<div class="task">
 		<input type="checkbox" class="check" id="check-{{$id}}"
-			   ng-model="task.status"
+			   ng-model="task.status" 
 			   ng-true-value="'completed'"
 			   ng-false-value="'needsAction'"
 			   ng-change="changeStatus(task)" />
@@ -36,8 +36,10 @@
 		<span class="actions">
 			<span class="pin" title="pin task" ng-class="{active: task.pinned}" ng-click="pinTask(task)">&star;</span>
 			<span class="delete" title="delete task" ng-click="deleteTask(task.id)">&#8855;</span>
-			<span class="more" title="more" ng-click="more(task)">&hellip;</span>
+			<span class="more" title="more" ng-click="notes(task.id)">&hellip;</span>
 		</span>
+		<span ng-bind-html="task.completed"></span>
+		<span ng-bind-html="task.notes"></span>
 	</div>
 	<ul ng-if="task.children.length">
 		<li ng-repeat="task in task.children" ng-include="'task-item.html'"></li>

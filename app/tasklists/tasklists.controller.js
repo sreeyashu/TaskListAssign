@@ -51,6 +51,7 @@
 				}
 			});
 		};
+		
 
 		loadTaskLists(false);
 	}

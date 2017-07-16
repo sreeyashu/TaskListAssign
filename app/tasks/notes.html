@@ -1,0 +1,11 @@
+<form role="form">
+	<div class="modal-body modal-add">
+		<div class="form-group">
+			<textarea class="form-control" ng-model="name" placeholder="enter task description" autofocus></textarea>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" ng-click="$modalInstance.dismiss()">Close</button>
+		<button type="submit" class="btn btn-success" ng-click="$modalInstance.close(name)">Save</button>
+	</div>
+</form>

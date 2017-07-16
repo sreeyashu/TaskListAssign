@@ -6,6 +6,7 @@
 		var tasklistId = $routeParams.id;
 
 		$scope.title = $routeParams.title;
+		//$scope.taskTitle = $routeParams.task.title;
 
 		$scope.addTask = function() {
 			sModal.open({
@@ -26,6 +27,20 @@
 				templateUrl: 'components/templates/confirm.html'
 			}).then(function() {
 				tasks.deleteTask(tasklistId, taskId).then(function() {
+					loadTasks(true);
+				});
+			});
+		};
+		
+		$scope.notes = function(taskId) {
+			sModal.open({
+				scope: $scope,
+				controller: ['$scope', function($scope) {
+					$scope.message = 'Add description to your task';
+				}],
+				templateUrl: 'tasks/notes.html'
+			}).then(function() {
+				tasks.updateTask(tasklistId, task, { notes: task.notes }).then(function() {
 					loadTasks(true);
 				});
 			});
