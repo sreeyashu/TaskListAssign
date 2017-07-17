@@ -40,7 +40,7 @@ To setup GruntJS build here is the steps:
 
 	grunt connect
 
-### Open address in browser [http://localhost:9999/app][2]
+Open address in browser [http://localhost:9999/app][2]
 	
 
 
