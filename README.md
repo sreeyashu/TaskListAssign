@@ -36,5 +36,19 @@ To setup GruntJS build here is the steps:
 
 	npm install grunt-contrib-concat --save-dev
 	
+### Run the development server
+
+	grunt connect
+
+### Open address in browser [http://localhost:9999/app][2]
+	
+
+
+### Unit tests
+
+To run the test suite, run these commands
+
+	npm install
+	npm test
 
 	
