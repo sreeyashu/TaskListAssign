@@ -526,3 +526,8 @@ display:table;width:100%;
 .tasks-screen .task .check:checked + label + .title {
 	text-decoration: line-through;
 }
+
+@media all and (max-width:479px){
+	.container{padding:0;}
+	.container-wrapper{width:100%; margin:0;}
+}
