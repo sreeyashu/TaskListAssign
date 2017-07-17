@@ -21,12 +21,20 @@ Clone or Download the code to your local.
 To setup GruntJS build here is the steps:
 
 1.Make sure you have setup your package.json or setup new one:
-npm init
+
+	npm init
+	
 2.Install Grunt CLI as global:
-npm install -g grunt-cli
+
+	npm install -g grunt-cli
+	
 3.Install Grunt in your local project:
-npm install grunt --save-dev
+
+	npm install grunt --save-dev
+	
 4.Install any Grunt Module you may need in your build process. Just for sake of this sample I will add Concat module for combining files together:
-npm install grunt-contrib-concat --save-dev
+
+	npm install grunt-contrib-concat --save-dev
+	
 
 	
