@@ -2,7 +2,7 @@
 	'use strict';
 
 	function tasklistsController($scope, tasks, sModal) {
-
+		$scope.today = new Date();
 		function loadTaskLists(refresh) {
 			tasks.getTaskLists(refresh).then(function(data) {
 				$scope.taskLists = data;

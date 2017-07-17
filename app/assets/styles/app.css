@@ -27,6 +27,13 @@ html, body, .view {
 	margin-bottom: 20px;
 }
 
+@font-face {
+  font-family: 'jalane-light';
+  src: url("fonts/Jalane_light.ttf");
+  src: url("fonts/Jalane_light.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
 
 
 /* ngView */
@@ -136,24 +143,47 @@ header .back {
 	cursor: pointer;
 }
 header .back img {
-	height: 40px;
+	height: 35px;
+	
 	vertical-align: top;
 }
-
+/*Common code*/
+.container-wrapper{
+	background:#fff;
+	width:400px;
+	margin:0 auto;
+	margin-top:80px;
+	margin-bottom:80px;
+	position:relative;
+}
 
 /* Tasklists screen */
+
 .tasklists-screen {
 	background: url(../images/bg-dark.png) repeat 0 0;
 }
 .tasklists-screen header {
-	padding: 25px 0;
-	min-height: 67px;
+	padding: 25px;
+	min-height: 200px;
 	position: relative;
+	background:#C03;
+	width:100%;
+	color:#fff;
 }
-.tasklists-screen header h2 {
-	color: #555;
-	margin: -1px 0 0;
-	float: left;
+.tasklists-screen header .today{ font-size:14px; margin-bottom:0;}
+.tasklists-screen header .day{
+	font-size:54px;
+	font-weight:bolder;
+	margin-right:10px;
+	font-family: 'jalane-light';
+}
+.tasklists-screen header .year-month{
+	font-size:18px;
+	display: inline-block;
+	font-family: 'jalane-light';
+}
+.tasklists-screen header .year-month span{
+	display:block;
 }
 .tasklists-screen header .upcoming {
 	float: left;
@@ -177,23 +207,26 @@ header .back img {
 	background: none;
 }
 
-.tasklists-screen header .add-new {
+.add-new {
 	color: hsl(0, 0%, 93%);
-	font-size: 62px;
+	font-size: 43px;
 	position: absolute;
-	right: 0;
-	top: 15px;
+	right: 46px;;
+	top: 143px;
 	height: 60px;
 	display: inline-block;
 	width: 60px;
-	background: rgba(120, 120, 120, 0.15);
+	background: #C03;
 	line-height: 57px;
 	text-align: center;
 	cursor: pointer;
+	-webkit-box-shadow:-1px -4px 38px -2px rgb(255, 255, 255);
+-moz-box-shadow: -1px -4px 38px -2px rgb(255, 255, 255);
+box-shadow: -1px -4px 38px -2px rgb(255, 255, 255);border-radius:50%;
+z-index:1;
+
 }
-.tasklists-screen header .add-new:hover {
-	background: rgba(120, 120, 120, 0.4);
-}
+
 
 /* adding new tasklist */
 .modal-add .form-group {
@@ -214,32 +247,44 @@ header .back img {
 .confirm-modal .message {
 	font-size: 24px;
 }
-
+ul.task-lists{
+	background: #fff;
+    padding: 20px;
+    top: -27px;
+    position: relative;
+    margin: 0 15px;
+	-webkit-box-shadow: 0px 2px 0px 1px rgba(138,138,138,0.35);
+-moz-box-shadow: 0px 2px 0px 1px rgba(138,138,138,0.35);
+box-shadow: 0px 2px 0px 1px rgba(138,138,138,0.35);
+padding-top:40px;
+}
 
 .task-lists > li {
 	list-style: none;
-	padding: 10px;
-	width: 200px;
-	height: 200px;
-	display: inline-block;
+	padding: 12px;
 	vertical-align: top;
-	margin: 0 20px 20px 0;
 	color: #FFF;
-	background: rgba(185, 231, 176, 0.3);
 	font-size: 18px;
 	position: relative;
+	margin-bottom:10px;
+	background:#fff;
+	-webkit-box-shadow: 0px 0px 34px -12px rgba(94,182,204,1);
+-moz-box-shadow: 0px 0px 34px -12px rgba(94,182,204,1);
+box-shadow: 0px 0px 34px -12px rgba(94,182,204,1);
+min-height:80px;
+	
 }
-.task-lists > li.no-child {
-	background: rgba(185, 231, 176, 0.3) url(../images/view.png) no-repeat 50% 63%;
-}
+.task-lists > li:before{content:""; border-left:4px solid red; position:absolute; left:0; top:0;height:100%;}
+.task-lists > li:nth-child(3n):before{border-color:#FC0;}
+.task-lists > li:nth-child(3n+1):before{border-color:#C03;}
+.task-lists > li:nth-child(3n+2):before{border-color:#262626;}
+
 .task-lists > li.no-child .first {
 	display: none;
 }
 .task-lists > li > a {
-	font-size: 28px;
-	word-break: break-all;
-	color: #B3B3B3;
-	text-shadow: 1px 1px 1px #333;
+	font-size: 20px;
+	color: #262626;
 }
 .task-lists > li > .stats {
 	color: #DDD;
@@ -247,12 +292,11 @@ header .back img {
 	bottom: 0;
 	right: 15px;
 }
-.task-lists > li:not(.actions):hover {
-	background-color: rgba(226, 83, 56, 0.32) !important;
-}
+
 .task-lists .info {
 	font-size: .7em;
 	color: #AAA;
+	float:right;
 }
 .task-lists .first {
 	margin-top: 10px;
@@ -260,12 +304,18 @@ header .back img {
 	word-break: break-all;
 	max-height: 80px;
 	overflow: hidden;
+	font-size:14px;
 }
+.task-lists .first p{
+	margin-bottom:0;
+	margin-left:10px;
+}
+.tasks-label{ font-size:12px;margin-left:0 !important;}
 
 .task-lists > li .btn-actions {
 	position: absolute;
-	top: 0;
-	right: 7px;
+	bottom: 10px;
+	right: 13px;
 	cursor: pointer;
 	color: #AAA;
 }
@@ -273,7 +323,7 @@ header .back img {
 	color: #EEE;
 }
 .task-lists > li .actions-overlay {
-	position: absolute;
+	position: relative;
 	top: 0;
 	left: 0;
 	right: 0;
@@ -299,19 +349,27 @@ header .back img {
 .task-lists > li .actions-overlay .actions a {
 	cursor: pointer;
 }
+.no-tasks{ color:#999; font-size:12px; margin-top:10px;}
 
 
 /* Tasks screen */
 .tasks-screen {
-	background: url(../images/bg-gray.png) repeat 0 0;
+	background: url(../images/bg-dark.png) repeat 0 0;
 }
 .tasks-screen header {
-	padding: 25px 0;
-	min-height: 67px;
+	padding: 25px;
+    min-height: 200px;
+    position: relative;
+    background: #C03;
+    width: 100%;
+    color: #fff;
 }
 .tasks-screen header h1 {
-	color: #A24973; /* colors vary, configurable */
+	color: #fff; /* colors vary, configurable */
 	margin: -1px 0 0;
+	font-family: 'jalane-light';
+	margin-top:38px;
+	margin-left:15px;
 }
 
 .tasks-screen header h1 .actions {
@@ -321,27 +379,18 @@ header .back img {
 	cursor: pointer;
 }
 
-.tasks-screen .stats {
-	color: #5693E2;
-	font-size: 18px;
-}
-.tasks-screen .stats span {
-	color: #08C;
-	padding: 0 0 5px 5px;
-	display: inline-block;
-}
 
-.tasks-screen .stats.hide,
-.tasks-screen .stats.hide + ul,
-.tasks-screen .no-tasks {
-	display: none;
-}
-.tasks-screen .stats.hide ~ .no-tasks {
-	display: block;
-}
 
 .tasks-screen .list {
-	padding: 0;
+	background: #fff;
+    padding: 20px;
+    top: -27px;
+    position: relative;
+    margin: 0 15px;
+    -webkit-box-shadow: 0px 2px 0px 1px rgba(138,138,138,0.35);
+    -moz-box-shadow: 0px 2px 0px 1px rgba(138,138,138,0.35);
+    box-shadow: 0px 2px 0px 1px rgba(138,138,138,0.35);
+    padding-top: 40px;
 }
 .tasks-screen .list ul {
 	padding-left: 1.1em;
@@ -361,12 +410,30 @@ header .back img {
 }
 .tasks-screen li {
 	list-style-type: none;
-	border-left: 2px solid #5693e2;
-	margin-left: 1em;
 }
-.tasks-screen li .task {
-	padding-left: 2em;
+.tasks-screen .list > li {
+	list-style: none;
+	padding: 12px;
+	vertical-align: top;
+	font-size: 18px;
 	position: relative;
+	margin-bottom:10px;
+	background:#fff;
+	-webkit-box-shadow: 0px 0px 34px -12px rgba(94,182,204,1);
+-moz-box-shadow: 0px 0px 34px -12px rgba(94,182,204,1);
+box-shadow: 0px 0px 34px -12px rgba(94,182,204,1);
+min-height:80px;
+display:table;width:100%;
+	
+}
+.tasks-screen .list > li:before{content:""; border-left:4px solid red; position:absolute; left:0; top:0;height:100%;}
+.tasks-screen .list > li:nth-child(3n):before{border-color:#FC0;}
+.tasks-screen .list > li:nth-child(3n+1):before{border-color:#C03;}
+.tasks-screen .list > li:nth-child(3n+2):before{border-color:#262626;}
+.tasks-screen li .task {
+	position: relative;
+	display:table-cell;
+	vertical-align:middle;
 }
 .tasks-screen li div::before {
 	content: '';
@@ -375,9 +442,6 @@ header .back img {
 	left: -2px;
 	bottom: 50%;
 	width: 1.7em;
-	border: 2px solid #5693e2;
-	border-top: 0 none transparent;
-	border-right: 0 none transparent;
 }
 .tasks-screen li .task > * {
 	vertical-align: middle;
@@ -400,7 +464,33 @@ header .back img {
 	opacity: 1;
 }
 
+.tasks-screen li.stats {
+	color: #5693E2;
+	font-size: 18px;
+	margin-left:0;
+	box-shadow:none;
+	padding:0;
+	min-height:inherit;
+}
+.tasks-screen li.stats:before{ border-color:transparent !important;}
+.tasks-screen .stats span {
+	color: #08C;
+	padding: 0 0 5px 5px;
+	display: inline-block;
+}
 
+.tasks-screen .stats.hide,
+.tasks-screen .stats.hide + ul,
+.tasks-screen .no-tasks {
+	display: none;
+}
+.tasks-screen .stats.hide ~ .no-tasks {
+	display: block;
+}
+.tasks-screen li label{    top: 2px;
+    position: relative;}
+.task-date{ font-size:14px; margin-bottom:0; margin-left:23px;}
+.completed-on{ color:#CCC; font-size:12px;}
 
 /* Tree counters */
 .tasks-screen ul {
@@ -411,8 +501,8 @@ header .back img {
 	counter-increment: section;
 	content: counters(section, ".") " ";
 	position: absolute;
-	left: 2px;
-	top: 50%;
+	right: 2px;
+	top: 10px;
 	margin-top: -17px;
 	font-size: 10px;
 }

@@ -1,24 +1,24 @@
 <div class="container">
-
+<div class="container-wrapper">
 	<header class="clearfix">
+    <a ng-click="back()" class="back"><img src="assets/images/arrow-left.png" alt="" /></a>
 		<h1>
-			<a ng-click="back()" class="back"><img src="assets/images/arrow-left.png" alt="" /></a>
 			{{title}}
-			<div class="actions">
-				<a ng-click="addTask()"><img src="assets/images/add.png" title="add new task" alt=""/></a>
-			</div>
 		</h1>
 	</header>
-
-	<div class="stats" ng-class="{hide: !tasks.length}">
-		<span>{{total}} tasks (+{{todo}}/-{{completed}})</span>
-	</div>
+    <span class="add-new" ng-click="addTask()">+</span>
+	
 
 	<ul class="list">
+    	<li class="stats" ng-class="{hide: !tasks.length}">
+            <span>{{total}} tasks (+{{todo}}/-{{completed}})</span>
+        </li>
 		<li ng-repeat="task in tasks" ng-include="'task-item.html'"></li>
+        <li class="no-tasks" ng-class="{show: !tasks.length}">There are no tasks in this list yet.</li>
 	</ul>
 
-	<div class="no-tasks">There are no tasks in this list yet.</div>
+	
+</div>
 </div>
 
 <script type="text/ng-template" id="task-item.html" class="html">
@@ -36,10 +36,10 @@
 		<span class="actions">
 			<span class="pin" title="pin task" ng-class="{active: task.pinned}" ng-click="pinTask(task)">&star;</span>
 			<span class="delete" title="delete task" ng-click="deleteTask(task.id)">&#8855;</span>
-			<span class="more" title="more" ng-click="notes(task.id)">&hellip;</span>
+			<span class="more" title="more">&hellip;</span>
 		</span>
-		<span ng-bind-html="task.completed"></span>
 		<span ng-bind-html="task.notes"></span>
+		<p  class="task-date"><span class="completed-on" ng-class="{hide: !task.completed.length}">Completed on: </span><span ng-bind-html="task.completed | date:'EEE, MMM yyyy'"></span></p>
 	</div>
 	<ul ng-if="task.children.length">
 		<li ng-repeat="task in task.children" ng-include="'task-item.html'"></li>

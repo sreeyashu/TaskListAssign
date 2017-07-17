@@ -1,36 +1,39 @@
 <div class="container">
-
-	<header class="clearfix">
-		<ul class="nav nav-pills upcoming hidden">
-			<li><a href="#">Get grocery</a></li>
-			<li><a href="#">Pick up Thomas</a></li>
-			<li><a href="#">Call Mike</a></li>
-		</ul>
-		<span class="add-new" ng-click="addNew()">+</span>
-	</header>
-
-	<ul class="task-lists list-unstyled">
-		<li ng-repeat="taskList in taskLists" 
-			colorize=".title" 
-			ng-class="{actions: showActions, 'no-child': !taskList.stats.items.length}">
-			
-			<a class="title" href="#/tasklists/{{taskList.title}}/{{taskList.id}}">{{taskList.title}}</a>
-			<div class="info">{{taskList.updated | date:'short' }}</div>
-			<div class="first">
-				&gt;&gt; {{taskList.stats.items[0].title}} 
-			</div>
-			<h2 class="stats">+{{taskList.stats.todo}}/-{{taskList.stats.completed}}</h2>
-
-			<span class="btn-actions" title="actions" ng-click="showActions=true">&hellip;</span>
-			<div class="actions-overlay">
-				<span class="btn-close" ng-click="showActions=false">&times;</span>
-				<h4>Actions</h4>
-				<ul class="list-unstyled actions">
-					<li><a ng-click="refresh()">Refresh</a></li>
-					<li><a ng-click="rename(taskList)">Rename</a></li>
-					<li><a ng-click="delete(taskList.id)">Delete</a></li>
-				</ul>
-			</div>
-		</li>
-	</ul>
+	<div class="container-wrapper">
+        <header class="clearfix">
+        	<p class="today">Today,</p>
+            <span class="day">{{ today | date:'dd' }}</span>
+            <span class="year-month"><span>{{ today | date:'MMMM' }}</span><span>{{ today | date:'yyyy' }}</span></span>
+        </header>
+    <span class="add-new" ng-click="addNew()">+</span>
+        <ul class="task-lists list-unstyled">
+            <li ng-repeat="taskList in taskLists" 
+                colorize=".title" 
+                ng-class="{actions: showActions, 'no-child': !taskList.stats.items.length}">
+                
+                <a class="title" href="#/tasklists/{{taskList.title}}/{{taskList.id}}">{{taskList.title}}</a>
+                <div class="info">{{taskList.updated | date:'hh:mm:a' }}</div>
+                <div class="first">
+                	<p class="tasks-label">Tasks</p>
+                    <p>&middot; {{taskList.stats.items[0].title}}</p>
+                </div>
+                <div class="no-tasks hide" ng-class="{show: !taskList.stats.items.length}">
+                    <p>No tasks yet</p>
+                </div>
+                <!--<h2 class="stats">+{{taskList.stats.todo}}/-{{taskList.stats.completed}}</h2>-->
+    
+                <span class="btn-actions" title="actions" ng-click="showActions=true">&hellip;</span>
+                <div class="actions-overlay">
+                    <span class="btn-close" ng-click="showActions=false">x</span>
+                    <h4>Actions</h4>
+                    <ul class="list-unstyled actions">
+                        <li><a ng-click="refresh()">Refresh</a></li>
+                        <li><a ng-click="rename(taskList)">Rename</a></li>
+                        <li><a ng-click="delete(taskList.id)">Delete</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+    
 </div>
